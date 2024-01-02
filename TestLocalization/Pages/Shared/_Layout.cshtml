@@ -38,10 +38,17 @@
                                     <a class="nav-link" asp-page="/Index" asp-route-lang="us">English</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-page="/Index" asp-route-lang="fr">French</a>
+                                    <a class="nav-link" href="/us/non-existing-path" title="Must return 404.">English - non-existing-path</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-page="/Index" asp-route-lang="nonsense">Nonsense</a>
+                                    <a class="nav-link" asp-page="/Index" asp-route-lang="fr">French</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="/Index" asp-route-lang="nonsense">Nonsense root</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/nonsense/path">Nonsense path</a>
                                 </li>
                             </ul>
 

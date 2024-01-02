@@ -2,7 +2,7 @@
 
 public class SupportedAppLanguages
 {
-    public Dictionary<string, Language> Dict { get; set; }
+    public Dictionary<string, Language> Dict { get; init; }
 }
 
 public class Language

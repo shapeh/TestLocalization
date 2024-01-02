@@ -6,4 +6,9 @@
 
 <div class="text-center">
     <h1 class="display-4">@ViewData["Title"]</h1>
+    <strong>Failing image:</strong> (/test.png)<br />
+    <img src="/test.png" alt="This is a missing image, yields 404" /><br /><br />
+    
+    <strong>Working image:</strong> (/img/test.png)<br />
+    <img src="/img/test.png" alt="" />
 </div>

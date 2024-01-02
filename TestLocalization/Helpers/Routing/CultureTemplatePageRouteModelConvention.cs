@@ -8,10 +8,10 @@ public class CultureTemplatePageRouteModelConvention: IPageRouteModelConvention
         {
             var template = selector.AttributeRouteModel.Template;
 
-            // Skip the MicrosoftIdentity pages
-            if (template.StartsWith("MicrosoftIdentity")) continue;
+            if (template.StartsWith("MicrosoftIdentity")) continue;  // Skip MicrosoftIdentity pages
 
-            // Prepend the /{lang}/ route value to allow for route-based localization
+            // Prepend {lang}/ to the page routes allow for route-based localization
+            selector.AttributeRouteModel.Order = -1;
             selector.AttributeRouteModel.Template = AttributeRouteModel.CombineTemplates("{lang}", template);
         }
     }

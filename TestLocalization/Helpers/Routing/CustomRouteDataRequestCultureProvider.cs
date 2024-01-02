@@ -5,10 +5,11 @@ public class CustomRouteDataRequestCultureProvider : RequestCultureProvider
     public SupportedAppLanguages SupportedAppLanguages;
     public override Task<ProviderCultureResult> DetermineProviderCultureResult(HttpContext httpContext)
     {
-        var lang = (string)httpContext.Request.RouteValues["lang"];
+
+        var lang = (string)httpContext.GetRouteValue("lang");
         var urlCulture = httpContext.Request.Path.Value.Split('/')[1];
 
-        var container = new[] {lang, urlCulture};
+        string[] container = [lang, urlCulture];
         
         var culture = SupportedAppLanguages.Dict.Values.SingleOrDefault(langInApp => container.Contains(langInApp.Icc) );
 
@@ -17,7 +18,8 @@ public class CustomRouteDataRequestCultureProvider : RequestCultureProvider
             return Task.FromResult(new ProviderCultureResult(culture.Culture));
         }
 
-        // Use default culture
+        // if no match, return 404
+        httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
         return Task.FromResult(new ProviderCultureResult(Options.DefaultRequestCulture.Culture.TwoLetterISOLanguageName));
     }
 }
