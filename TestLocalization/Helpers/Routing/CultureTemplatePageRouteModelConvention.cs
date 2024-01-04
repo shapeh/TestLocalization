@@ -12,7 +12,7 @@ public class CultureTemplatePageRouteModelConvention: IPageRouteModelConvention
 
             // Prepend {lang}/ to the page routes allow for route-based localization
             selector.AttributeRouteModel.Order = -1;
-            selector.AttributeRouteModel.Template = AttributeRouteModel.CombineTemplates("{lang}", template);
+            selector.AttributeRouteModel.Template = AttributeRouteModel.CombineTemplates("{lang:cultureConstraint}", template);
         }
     }
 }

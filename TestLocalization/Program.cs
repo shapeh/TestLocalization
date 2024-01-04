@@ -11,6 +11,7 @@ builder.Services.AddRouting(options =>
 {
     options.LowercaseUrls = true;
     options.AppendTrailingSlash = false;
+    options.ConstraintMap.Add("cultureConstraint", typeof(CultureConstraint));
 });
 
 builder.Services.Configure<RequestLocalizationOptions>(options =>
@@ -58,7 +59,7 @@ app.UseRequestLocalization();
 
 app.UseAuthorization();
 
-app.UseMiddleware<RouteConstraintMiddleware>(supportedAppLanguages);
+//app.UseMiddleware<RouteConstraintMiddleware>(supportedAppLanguages);
 
 app.MapRazorPages();
 app.Run();
